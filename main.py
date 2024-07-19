@@ -22,6 +22,8 @@ def export_data(data: pd.DataFrame, schema: str, folder: str):
 
 if __name__ == '__main__':
     num_rows = 1000
+    schema_folder = 'schemas'
+    # TODO: use the schemas folder
     schema_name = 'default'
     destination = 'output'
     df = create_dataframe(schema_name, num_rows)
