@@ -55,14 +55,16 @@ def load_schema(schema_name: str, base_path="schemas") -> SchemaType:
     return schema_module.schema
 
 
-def create_dataframe(schema_name: str, num_rows: int) -> pd.DataFrame:
+def create_dataframe(schema_name: str, num_rows: int, schema: SchemaType = None) -> pd.DataFrame:
     """
     Create a pandas DataFrame with generated data based on a schema
     :param schema_name: name of the schema to use without prefix or extension
     :param num_rows: number of rows to generate
+    :param schema: optional schema dictionary
     :return: dataframe with generated data
     """
-    schema = load_schema(schema_name)
+    if not schema:
+        schema = load_schema(schema_name)
     generator = DataGenerator(schema)
     data = generator.generate_data(num_rows)
     df = pd.DataFrame(data)
