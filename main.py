@@ -1,14 +1,14 @@
 from utilities.utils_export import export_data
-from generate_data import create_dataframe
+from generate_data import create_dataframe, load_schema
 
 
 if __name__ == '__main__':
-    num_rows = 1000
+    num_rows = 10000
     schema_folder = 'schemas'
-    # TODO: use the schemas folder
     schema_name = 'default'
     folder_path = 'output'
-    df = create_dataframe(schema_name, num_rows)
+    schema = load_schema(schema_name, schema_folder)
+    df = create_dataframe(schema_name, num_rows, schema)
 
     # export the data to a csv file
     filename = export_data(
