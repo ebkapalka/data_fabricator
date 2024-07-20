@@ -1,23 +1,5 @@
+from utilities.utils_export import export_data
 from generate_data import create_dataframe
-from utilities import timestamp
-
-import pandas as pd
-import os
-
-
-def export_data(data: pd.DataFrame, schema: str, folder: str):
-    """
-    Export the data to a csv file
-    :param data: dataframe to export
-    :param schema: name of the schema used to generate the data
-    :param folder: folder to save the csv file
-    :return: None
-    """
-    filename = f"{timestamp()}_{schema}_data.csv"
-    if not os.path.exists(folder):
-        os.makedirs(folder)
-    path = os.path.join(folder, filename)
-    data.to_csv(path, index=False)
 
 
 if __name__ == '__main__':
@@ -25,11 +7,18 @@ if __name__ == '__main__':
     schema_folder = 'schemas'
     # TODO: use the schemas folder
     schema_name = 'default'
-    destination = 'output'
+    folder_path = 'output'
     df = create_dataframe(schema_name, num_rows)
 
     # export the data to a csv file
-    export_data(df, schema_name, destination)
+    filename = export_data(
+        data=df,
+        schema=schema_name,
+        folder=folder_path,
+        file_type='csv',
+        encoding='utf-8',
+        header=True,
+        line_ending='\n')
     print(f"Generated {num_rows} rows of data")
     print(f"using schema '{schema_name}' and")
-    print(f"saved to '{schema_name}_data.csv'")
+    print(f"saved to '{filename}'")
