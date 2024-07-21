@@ -2,8 +2,8 @@ from typing import Callable, Union
 from faker import Faker
 import random
 
-fake = Faker()
 
+fake = Faker()
 GeneratorFunction = Callable[[], Union[str, int, float, bool]]
 GeneratorList = list[Union[str, int, float, bool]]
 SchemaValue = Union[GeneratorFunction, GeneratorList]
