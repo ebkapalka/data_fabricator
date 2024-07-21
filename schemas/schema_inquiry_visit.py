@@ -1,3 +1,4 @@
+from random import random
 from typing import Callable, Union
 from faker import Faker
 
@@ -23,7 +24,18 @@ schema: dict[str, SchemaValue] = {
     'zip5': fake.zipcode,
     'date_of_birth': fake.date_of_birth,
     'email': fake.email,
-    #.....
+    'pr_type': None,
+    'permanent_phone': None,
+    'cl_type': None,
+    'cell_phone': fake.phone_number,
+    'gender': None,
+    'ethnicity': None,
+    'race_1': None,
+    'race_2': None,
+    'race_3': None,
+    'race_4': None,
+    'race_5': None,
+    'race_6': None,
     'age': lambda: biased_int(17, 55, scale=2.0),
     # Add more columns as needed
 }
@@ -38,5 +50,10 @@ schema: dict[str, SchemaValue] = {
   state	
   zip5	
   date_of_birth	
-  email	pr_type	permanent_phone	cl_type	cell_phone	gender	ethnicity	race_1	race_2	race_3	race_4	race_5	race_6	hs_ceeb	grad_date	start_term	college_code	major1	admit_type	parent1_relationship	parent1_first_name	parent1_last_name	parent1_email	parent2_relationship	parent2_first_name	parent2_last_name	parent2_email	undefined	source_method	source_category	contact_type
+  email	
+  pr_type	
+  permanent_phone	
+  cl_type	
+  cell_phone	
+  gender	ethnicity	race_1	race_2	race_3	race_4	race_5	race_6	hs_ceeb	grad_date	start_term	college_code	major1	admit_type	parent1_relationship	parent1_first_name	parent1_last_name	parent1_email	parent2_relationship	parent2_first_name	parent2_last_name	parent2_email	undefined	source_method	source_category	contact_type
 """
