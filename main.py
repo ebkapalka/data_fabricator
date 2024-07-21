@@ -5,7 +5,7 @@ from generate_data import create_dataframe, load_schema
 if __name__ == '__main__':
     num_rows = 10000
     schema_folder = 'schemas'
-    schema_name = 'default'
+    schema_name = 'inquiry_visit'
     folder_path = 'output'
     schema = load_schema(schema_name, schema_folder)
     df = create_dataframe(schema_name, num_rows, schema)
